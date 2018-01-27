@@ -9,26 +9,26 @@
 
 int main(int argc, char **argv)
 {
-    char name[100];
-    int fd;
+	char name[100];
+	int fd;
 	unsigned long count;
 
-    snprintf(name, sizeof(name), "/dev/%s", MODULE_NAME);
+	snprintf(name, sizeof(name), "/dev/%s", MODULE_NAME);
 
-    fd = open(name, O_RDONLY);
-    if (fd < 0)
-    {
-        perror("unable to open dev");
-        return 0;
-    }
+	fd = open(name, O_RDONLY);
+	if (fd < 0)
+	{
+		perror("unable to open dev");
+		return 0;
+	}
 
-    if (ioctl(fd, STATS_DIVBYZERO, &count) != 0)
-    {
-        perror("ioctl COUNT_DIVBYZERO error");
-        abort();
-    }
+	if (ioctl(fd, STATS_DIVBYZERO, &count) != 0)
+	{
+		perror("ioctl COUNT_DIVBYZERO error");
+		abort();
+	}
 	printf("Number of divbyzero : %lx\n", count);
-    
-    close(fd);
-    return 0;
+
+	close(fd);
+	return 0;
 }

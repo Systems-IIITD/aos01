@@ -8,5 +8,5 @@
  */
 
 ENTRY(__wrapper_divbyzero)
-/* NOT_IMPLEMENTED */
+	/* NOT_IMPLEMENTED */
 ENDPROC(__wrapper_divbyzero)
