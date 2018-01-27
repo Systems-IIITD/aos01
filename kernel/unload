@@ -1,0 +1,5 @@
+#!/bin/bash
+MODULE="aos"
+
+rmmod $MODULE
+rm -f /dev/$MODULE

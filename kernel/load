@@ -1,0 +1,13 @@
+#!/bin/bash
+MODULE_NAME=aos
+MAJOR_NUM=100
+
+lsmod |grep -e ^$MODULE_NAME > /dev/null
+if [ $? -eq 0 ]
+then
+	./unload $MODULE_NAME
+fi
+insmod $MODULE_NAME.ko
+rm -f /dev/$MODULE_NAME
+mknod /dev/$MODULE_NAME c $MAJOR_NUM 0
+chmod 666 /dev/$MODULE_NAME
